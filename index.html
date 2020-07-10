@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spacer | Turn Based Space Combat</title>
+    <meta property="og:description" content="The ship Peruvian encounters a new foe in the cold depths of space. An unknown blue ship titled the Sutherland. Will the Peruvian emerge victorious? That is up to you Captain! " />
+    <meta property="og:image" content="https://i.ibb.co/WzXftVs/SPACER.png" />
+
+    <link rel="stylesheet" href="./index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Odibee+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/js/all.min.js">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Gugi&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" />
+</head>
+
+<body>
+    <!-- LANDING SCREEN -->
+    <div class="landing_section" id="landing_section">
+        <div class="landing_section_container">
+            <img src="./images/logo.png" alt="" class="landing_section_logo animate__animated animate__fadeInUp ">
+            <p class="landing_section__subtitle animate__animated animate__fadeInUp animate__delay-1s">Turn Based Space
+                Combat <br>
+                <i><span style="font-size: 1.3rem;">by Luka Peric</span></i></p>
+               
+            <button class="startGameButton animate__animated animate__fadeInUp animate__delay-2s"
+                onclick="trigger.startGame()">START</button>
+        </div>
+    </div>
+
+    <div class="gameBody">
+        <!-- ENEMY SECTION -->
+        <div class="enemySection">
+            <div class="enemyShipSection">
+
+                <div class="enemyShipSection__logo_container">
+
+                </div>
+
+                <div class="enemyShipSectioAnimation">
+                    <img src="./images/enemyShip/enemyShip.png" class="enemyShip" id="enemyShip" alt="">
+                    <img src="./images/enemyShip/enemyShipAttackLaser.gif" class="enemyShipLaserAttack"
+                        id="enemyShipLaserAttack" alt="">
+                    <img src="./images/enemyShip/EnemyShipAttackRocket.gif" class="EnemyShipAttackRocket"
+                        id="EnemyShipAttackRocket" alt="">
+                </div>
+
+
+            </div>
+            <div class="enemyInfoSection">
+                <div class="options">
+                    <div class="options__container">
+                        <img class="enemyShipSection__logo" src="./images/logo.png" alt="">
+                        <i onclick="trigger.toggleMusic()" class="fas fa-volume-up fa-2x" id="music_on"></i>
+                        <i onclick="trigger.toggleMusic()" class="fas fa-volume-mute fa-2x" id="music_off"></i>
+
+                        <i onclick="trigger.toggleMenu()" class="fas fa-bars fa-2x" id="menu_btn"></i>
+
+                    </div>
+                </div>
+                <div class="enemyShipInfo__container">
+                    <div class="enemyShipInfo">
+                        <h3 class="shipNameEnemy">Sutherland</h3>
+                        <span>HP:</span> <span id="enemyHp"></span>
+                        <br>
+                        <span>Shield:</span> <span id="enemyShield"></span>
+                        <br>
+                        <span>Rockets:</span> <span id="enemyRockets"></span>
+                        <br>
+                        <span>Engine:</span> <span id="enemyEngine"></span>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- INFO -->
+        <div class="info">
+            <div class="info_container">
+                <div class="info_text">
+                    <span id="nameShip"></span>
+                    <span id="restOfText"></span>
+                </div>
+            </div>
+            <div class="info__bg_container"></div>
+        </div>
+
+        <!-- PLAYER SECTION -->
+        <div class="playerSection">
+
+            <div class="playerShipSection">
+
+                <img class="playerShip" id="playerShip" src="./images/ships/playerShip.png" alt="">
+                <img class="playerShipLaserAttack" id="playerShipLaserAttack"
+                    src="./images/ships/playerShipAttackLaser.gif" alt="">
+                <img class="playerShipRocketAttack" id="playerShipRocketAttack"
+                    src="./images/ships/playerShipAttackRocket.gif" alt="">
+
+            </div>
+
+
+            <div class="playerInfoSection">
+                <div class="playerInfoSection__stats">
+                    <div class="playerShipInfo__container">
+                        <h3 class="shipNamePlayer">Peruvian</h3>
+                        <span>HP:</span> <span id="playerHp"></span>
+                        <br>
+                        <span>Shield:</span> <span id="playerShield"></span>
+                        <br>
+                        <span>Rockets:</span> <span id="playerRockets"></span>
+                        <br>
+                        <span>Engine:</span> <span id="playerEngine"></span>
+                    </div>
+                </div>
+                <div class="playerInfoSection__buttons">
+                    <div class="playerInfoSection__buttons__container">
+                        <button id="btnLaser" onclick="trigger.playerLaserAttack()">Laser Attack</button>
+                        <button id="btnRocket" onclick="trigger.playerRocketAttack()">Rocket Attack</button>
+                        <button id="btnEndTurn" onclick="trigger.endTurn()">End Turn</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- MENU -->
+        <div class="menu" id="menu">
+
+            <a href="http://spacer.rf.gd/" class="new_game_btn">
+                <div class="new_game_container">
+                    <p>NEW GAME</p>
+                </div>
+            </a>
+
+
+            <div class="rules">
+                <h2>RULES</h2>
+                <p>- This is a turn based game where the player and the enemy take
+                    turns to fire at each other.
+                </p>
+                <p>
+                    - The player can only shoot the laser and the rocket once per turn.
+                    If the player fired a rocket, untill the end of the game he will
+                    have no more rockets left.
+                </p>
+                <p>
+                    - After the player has ended their turn, the enemy AI will
+                    fire back at you with it's own weapons.
+                </p>
+                <p>
+                    - If you or the enemy get hit by a laser, there is chance
+                    that the engines will be disabled, meaning that who ever
+                    has their engines destroyed will be 20% more likely to be hit.
+                </p>
+            </div>
+        </div>
+
+        <!-- GAME ENDING SCREEN -->
+
+        <div class="player_vic" id="player_vic">
+            <div>
+                <h1>VICTORY</h1>
+                <p>You have successfully destroyed the enemy ship!</p>
+                <a href="http://spacer.rf.gd/" class="new_game_btn">
+                    <div class="new_game_container">
+                        <p>NEW GAME</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="enemy_vic" id="enemy_vic">
+            <div>
+                <h1>GAME OVER</h1>
+                <p>The enemy ship destroyed you!</p>
+                <p> More luck next time.</p>
+                <a href="http://spacer.rf.gd/" class="new_game_btn">
+                    <div class="new_game_container">
+                        <p>NEW GAME</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <div class="not_playing_on_phone">
+        <div>
+            <p>This game is for mobile devices only.</p>
+            <p>If you wish to play the game on your PC, please go into the developer mode in your current browser and
+                select a mobile device screen.</p>
+            <p>You can access the developer mode with "Ctrl+Shift+I" or navigate your way there through the options
+                menu.</p>
+        </div>
+
+    </div>
+
+
+
+
+
+
+    <script src="./index.js"></script>
+
+</body>
+
+</html>
