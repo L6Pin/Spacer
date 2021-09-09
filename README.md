@@ -10,8 +10,7 @@
 <h2>Technologies</h2>
 <p>For this project the following tecnologies were used:</p>
 <ul>
-    <li><p><span style="font-weight: bold">HTML</span> - Used to create the markup of the page.</p>
-    </li>
-        <li><p><span style="font-weight: bold">CSS</span> - Sass was used in order to streamline and simplify the styling of the page.</p>
-    </li>
+    <li><p><span style="font-weight: bold">HTML</span> - Used to create the markup of the page.</p></li>
+    <li><p><span style="font-weight: bold">CSS</span> - Sass was used in order to streamline and simplify the styling of the page.</p></li>
+    <li><p><span style="font-weight: bold">JavaScript</span> - JavaScript was used to add the functionality of the game.</p></li>
 </ul>
